@@ -39,14 +39,7 @@ models:
           - name: o_orderdate
             tests:
                 - unique
-                - not_null
-
-    - name: dates 
-      columns:
-          - name: d_date
-            tests:
-                - unique
-                - not_null     
+                - not_null 
     
     - name: times 
       columns:
@@ -54,3 +47,14 @@ models:
             tests:
                 - unique
                 - not_null   
+    
+    - name: playing_with_tests
+      columns:
+          - name: c_custkey
+            tests:
+               - unique
+               - not_null
+          - name: c_mktsegment
+            tests:
+               - accepted_values:
+                  values: ['BUILDING','AUTOMOBILE','MACHINERY','HOUSEHOLD','FURNITURE']
