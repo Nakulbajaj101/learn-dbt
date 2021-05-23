@@ -10,6 +10,9 @@ models:
             tests:
                 - unique
                 - not_null
+                - accepted_values:
+                    values: [1, 2]
+                    quote: false
 
     - name: my_second_dbt_model
       description: "A starter dbt model"
@@ -19,6 +22,9 @@ models:
             tests:
                 - unique
                 - not_null
+                - relationships:
+                    to: ref('my_first_dbt_model')
+                    field: id
 
     - name: customer_total_spend
       description: "Total customer spending"
@@ -35,3 +41,17 @@ models:
             tests:
                 - unique
                 - not_null
+
+    - name: dates 
+      columns:
+          - name: d_date
+            tests:
+                - unique
+                - not_null     
+    
+    - name: times 
+      columns:
+          - name: t_time
+            tests:
+                - unique
+                - not_null   

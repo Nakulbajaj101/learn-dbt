@@ -6,6 +6,10 @@ name: 'nakul_learn_dbt'
 version: '1.0.0'
 config-version: 2
 
+vars:
+    my_first_variable: True 
+    my_second_variable: 1
+
 # This setting configures which "profile" dbt uses for this project.
 profile: 'learn-dbt-snowflake-db'
 
@@ -35,4 +39,4 @@ models:
   nakul_learn_dbt:
       # Applies to all files under models/example/
       example:
-          materialized: view
+        materialized: table

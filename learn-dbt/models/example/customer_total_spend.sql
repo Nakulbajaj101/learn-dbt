@@ -1,4 +1,3 @@
-{{ config(materialized='table') }}
 
 
 select cust.c_custkey,

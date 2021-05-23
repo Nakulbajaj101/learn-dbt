@@ -1,4 +1,3 @@
-{{ config(materialized='table') }}
 
 select o_orderdate,
 o_totalprice,
