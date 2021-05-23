@@ -19,3 +19,19 @@ models:
             tests:
                 - unique
                 - not_null
+
+    - name: customer_total_spend
+      description: "Total customer spending"
+      columns:
+          - name: c_custkey
+            tests:
+                - unique
+                - not_null
+
+    - name: cumulative_orders_by_date
+      description: "total order revenue as at a particular date"
+      columns:
+          - name: o_orderdate
+            tests:
+                - unique
+                - not_null
