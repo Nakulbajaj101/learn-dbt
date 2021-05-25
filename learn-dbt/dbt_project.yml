@@ -10,6 +10,16 @@ vars:
     my_first_variable: True 
     my_second_variable: 1
 
+on-run-start:
+  - 'create table if not exists audit (model text, state text, time timestamp)'
+
+on-run-end:
+  - 'grant usage on warehouse transform_wh to role analytics_role'
+  - 'grant usage on database analytics to role analytics_role'
+  - 'grant usage on schema analytics.dbt to role analytics_role'
+  #- 'grant select on all tables in schema  analytics.dbt to role analytics_role'
+  #- 'grant select on all views in schema  analytics.dbt to role analytics_role'
+
 # This setting configures which "profile" dbt uses for this project.
 profile: 'learn-dbt-snowflake-db'
 
@@ -40,6 +50,8 @@ models:
       # Applies to all files under models/example/
       example:
         materialized: table
+        pre-hook: "insert into dbt.audit values ('{{this.name}}','starting model deployment', current_timestamp)"
       # Applies to all files under models/new/
       new:
         materialized: view
+        pre-hook: "insert into dbt.audit values ('{{this.name}}','starting model deployment', current_timestamp)"

@@ -8,7 +8,7 @@ from
 (
 select  o_orderdate,
 sum(o_totalprice) as o_totalprice
-from "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."ORDERS"
+from {{ source('sample_snowflake','orders') }}
 group by  o_orderdate
 ) 
 

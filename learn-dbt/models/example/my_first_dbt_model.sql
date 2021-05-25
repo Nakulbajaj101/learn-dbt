@@ -11,11 +11,11 @@
 
 with source_data as (
 
-    select 1 as id
+    select 1 as id, 'CA' as state, CURRENT_TIMESTAMP as updated_at
     union all
-    select null as id
-    union all 
-    select 2 as id
+    select null as id, 'WA' as state, CURRENT_TIMESTAMP as updated_at
+    union all
+    select 2 as id, 'NY' as state, CURRENT_TIMESTAMP as updated_at
 
 )
 
