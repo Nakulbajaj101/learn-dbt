@@ -16,7 +16,7 @@ on-run-start:
 on-run-end:
   - 'grant usage on warehouse transform_wh to role analytics_role'
   - 'grant usage on database analytics to role analytics_role'
-  - 'grant usage on {{ target.schema }} to role analytics_role'
+  - 'grant usage on schema analytics.{{ target.schema }} to role analytics_role'
   #- 'grant select on all tables in schema  analytics.dbt to role analytics_role'
   #- 'grant select on all views in schema  analytics.dbt to role analytics_role'
 
