@@ -3,6 +3,7 @@ version: 2
 
 models:
     - name: dates 
+      description: 'table about dates running incrementally'
       columns:
           - name: d_date
             tests:
