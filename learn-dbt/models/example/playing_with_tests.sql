@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 
-SELECT *
+SELECT *, {{segment('c_mktsegment')}} as cust_segment
 
 FROM 
 
