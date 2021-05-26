@@ -16,7 +16,7 @@ on-run-start:
 on-run-end:
   - 'grant usage on warehouse transform_wh to role analytics_role'
   - 'grant usage on database analytics to role analytics_role'
-  - 'grant usage on schema analytics.dbt to role analytics_role'
+  - 'grant usage on {{ target.schema }} to role analytics_role'
   #- 'grant select on all tables in schema  analytics.dbt to role analytics_role'
   #- 'grant select on all views in schema  analytics.dbt to role analytics_role'
 
@@ -50,8 +50,8 @@ models:
       # Applies to all files under models/example/
       example:
         materialized: table
-        pre-hook: "insert into dbt.audit values ('{{this.name}}','starting model deployment', current_timestamp)"
+        pre-hook: "insert into {{ target.schema }}.audit values ('{{this.name}}','starting model deployment', current_timestamp)"
       # Applies to all files under models/new/
       new:
         materialized: view
-        pre-hook: "insert into dbt.audit values ('{{this.name}}','starting model deployment', current_timestamp)"
+        pre-hook: "insert into {{ target.schema }}.audit values ('{{this.name}}','starting model deployment', current_timestamp)"
